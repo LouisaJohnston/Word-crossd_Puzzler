@@ -1,3 +1,13 @@
+h1 {
+    text-align: center;
+}
+
+#game-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -11,7 +21,30 @@
     border: 1px solid black;
 }
 
+
 .black-box {
     border: 1px solid white;
     background-color: black;
+}
+
+.clue-container {
+    display: flex;
+    flex-wrap: nowrap;
+    border: 1px solid black;
+    height: 500px;
+    width: 400px;
+}
+
+.across {
+    width: 50%;
+    border-right: 1px solid black;
+}
+
+.down {
+    width: 50%;
+}
+
+h3.direction-title {
+    text-align: center;
+    border-bottom: 1px solid black;
 }
