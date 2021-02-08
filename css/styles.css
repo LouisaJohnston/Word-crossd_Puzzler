@@ -29,24 +29,28 @@ h1 {
   border: 1px solid black;
 }
 
-.box {
-  border: 1px solid black;
-  display: flex;
-}
-
 .black-box {
   border: 1px solid white;
   background-color: black;
 }
 
+.box {
+  border: 1px solid black;
+  display: inline;
+}
+
 form {
-  width: 20px;
-  margin: auto;
   font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  margin-top: 22px;
 }
 
 input {
-    width: 15px;
+  border: 1px solid black;
+  width: 20px;
+  margin: auto;
 }
 
 /***** Clue Styling *****/
