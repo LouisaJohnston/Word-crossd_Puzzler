@@ -3,22 +3,22 @@ h1 {
 }
 
 .message-container {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 3em;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 3em;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 /***** Game Styling *****/
 #game-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-top: 50px;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 50px;
+}
 
 .grid-container {
   display: grid;
@@ -39,11 +39,14 @@ h1 {
   background-color: black;
 }
 
-.letter-input {
-  width: 50%;
-  height: 50%;
+form {
+  width: 20px;
   margin: auto;
   font-size: 2em;
+}
+
+input {
+    width: 15px;
 }
 
 /***** Clue Styling *****/
@@ -72,7 +75,6 @@ h3.direction-title {
 }
 
 .clue {
-    padding-left: 10px;
-    padding-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
-

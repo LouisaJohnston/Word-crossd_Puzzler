@@ -1,6 +1,7 @@
-/* Constants */
+/***** Constants *****/
 
-/* DOM References */
+/***** DOM References *****/
+// select specific input elements
 const one = document.querySelector("#one");
 const two = document.querySelector("#two");
 const three = document.querySelector("#three");
@@ -23,10 +24,20 @@ const nineteen = document.querySelector("#nineteen");
 const twenty = document.querySelector("#twenty");
 const twentyone = document.querySelector("#twentyone");
 
-console.log(twentyone);
+const inputEls = document.querySelectorAll(".letter-input")
 
-/* Game Logic Variables and State */
 
-/* Functions and Game Logic */
 
-/* Event Listeners */
+/***** Game Logic Variables and State *****/
+
+
+
+/***** Functions and Game Logic *****/
+const letterInput = (event) => {
+    event.preventDefault();
+    console.log(two.value)
+}
+
+
+/***** Event Listeners *****/
+document.addEventListener("submit", letterInput);
