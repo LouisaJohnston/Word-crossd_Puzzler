@@ -7,6 +7,13 @@ A crossword is a puzzle consisting of a grid of squares and blanks into which wo
 The user completes the puzzle by first reading the provided clues and trying to guess the correct words according to a) the amount of letters in the word and b) intersecting letters that have already been filled out. The user wins by correctly guessing all the vertical and horizontal words.
 
 ## Wireframes
+![Initial Game State](wireframes/InitialGameState.jpg)
+
+![Intermediate Game State](wireframes/IntermediateGameState.jpg)
+
+![Final Game State](wireframes/FinalGameState.jpg)
+
+
 
 ## User stories
 1) The game starts with a blank 5x5 grid of 25 squares that are either blacked out or able to accept a single letter input. Next to the grid is a list of clues corresponding to the vertical and horizontol words, which are split into seperate lists. The clues are numbered and correspond to numbers on the grid itself to indicate which clue will solve which word.
