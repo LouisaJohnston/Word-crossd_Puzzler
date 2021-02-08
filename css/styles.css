@@ -2,13 +2,23 @@ h1 {
   text-align: center;
 }
 
-#game-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+.message-container {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 3em;
 }
 
-/***** Grid Styling *****/
+.hidden {
+    display: none;
+}
+
+/***** Game Styling *****/
+#game-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 50px;
+  }
 
 .grid-container {
   display: grid;
@@ -60,4 +70,8 @@ h3.direction-title {
   border-bottom: 1px solid black;
 }
 
+.clue {
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
