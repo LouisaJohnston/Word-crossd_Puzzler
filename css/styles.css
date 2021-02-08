@@ -1,50 +1,63 @@
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 #game-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
+/***** Grid Styling *****/
+
 .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    width: 500px;
-    height: 500px;
-    border: 1px solid black;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
 }
 
 .box {
-    border: 1px solid black;
+  border: 1px solid black;
+  display: flex;
 }
-
 
 .black-box {
-    border: 1px solid white;
-    background-color: black;
+  border: 1px solid white;
+  background-color: black;
 }
 
+.letter-input {
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  font-size: 2em;
+}
+
+/***** Clue Styling *****/
+
 .clue-container {
-    display: flex;
-    flex-wrap: nowrap;
-    border: 1px solid black;
-    height: 500px;
-    width: 400px;
+  display: flex;
+  flex-wrap: nowrap;
+  border: 1px solid black;
+  height: 500px;
+  width: 400px;
 }
 
 .across {
-    width: 50%;
-    border-right: 1px solid black;
+  width: 50%;
+  border-right: 1px solid black;
 }
 
 .down {
-    width: 50%;
+  width: 50%;
 }
 
 h3.direction-title {
-    text-align: center;
-    border-bottom: 1px solid black;
+  text-align: center;
+  border-bottom: 1px solid black;
 }
+
+
