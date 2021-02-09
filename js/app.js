@@ -1,4 +1,6 @@
 /***** Constants *****/
+let correctLetters = [];
+
 
 /***** DOM References *****/
 // select specific input elements
@@ -24,20 +26,27 @@ const nineteen = document.querySelector("#nineteen");
 const twenty = document.querySelector("#twenty");
 const twentyone = document.querySelector("#twentyone");
 
-const inputEls = document.querySelectorAll(".letter-input")
-
-
+const grid = document.querySelector(".grid-container");
+const input = document.querySelectorAll(".box > form > input")
+const messageContainer = document.querySelector(".message-container")
 
 /***** Game Logic Variables and State *****/
 
-
-
 /***** Functions and Game Logic *****/
-const letterInput = (event) => {
-    event.preventDefault();
-    console.log(two.value)
+//check user input against stored values
+
+const oneGuess= (e) => {
+  e.preventDefault();
+  if (one.value === "c") {
+    correctLetters.push(one.value)
+  }
+};
+
+if (correctLetters.length === 21) {
+    messageContainer.classList.remove("hidden")
 }
 
-
 /***** Event Listeners *****/
-document.addEventListener("submit", letterInput);
+// grid.addEventListener("submit", letterGuess);
+
+one.addEventListener("submit", oneGuess);

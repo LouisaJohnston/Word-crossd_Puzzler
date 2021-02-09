@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
+
+* {
+  font-family: "Playfair Display", serif;
+}
+
 h1 {
   text-align: center;
 }
@@ -27,6 +33,10 @@ h1 {
   width: 500px;
   height: 500px;
   border: 1px solid black;
+}
+
+.grid-container p {
+    padding-left: 10px;
 }
 
 .black-box {
