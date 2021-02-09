@@ -35,10 +35,6 @@ h1 {
   border: 1px solid black;
 }
 
-.grid-container p {
-  padding-left: 10px;
-}
-
 .black-box {
   border: 1px solid white;
   background-color: black;
@@ -46,15 +42,21 @@ h1 {
 
 .box {
   border: 1px solid black;
-  display: inline;
+  display: flex;
+}
+
+div.box > p {
+  padding-left: 6px;
+  margin-top: 0;
+  position: absolute;
 }
 
 input {
-  border: 1px solid black;
-  width: 20px;
+  width: 98%;
+  height: 98%;
   margin: auto;
-  display: block;
   text-transform: uppercase;
+  font-size: 3em;
 }
 
 /***** Clue Styling *****/
