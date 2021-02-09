@@ -1,52 +1,64 @@
 /***** Constants *****/
 let correctLetters = [];
+let wrongLetters = [];
+
+
+let letterKey = {
+    one: "c",
+    two: "h",
+    three: "e",
+    four: "r",
+    five: "l",
+    six: "o",
+    seven: "w",
+    eight: "e",
+    nine: "b",
+    ten: "a",
+    eleven: "t",
+    twelve: "e",
+    thirteen: "d",
+    fourteen: "e",
+    fifteen: "v",
+    sixteen: "e",
+    seventeen: "r",
+    eighteen: "e",
+    nineteen: "e",
+    twenty: "l",
+    twentyone: "s"
+}
+
+// object with keys each 
 
 
 /***** DOM References *****/
 // select specific input elements
-const one = document.querySelector("#one");
-const two = document.querySelector("#two");
-const three = document.querySelector("#three");
-const four = document.querySelector("#four");
-const five = document.querySelector("#five");
-const six = document.querySelector("#six");
-const seven = document.querySelector("#seven");
-const eight = document.querySelector("#eight");
-const nine = document.querySelector("#nine");
-const ten = document.querySelector("#ten");
-const eleven = document.querySelector("#eleven");
-const twelve = document.querySelector("#twelve");
-const thirteen = document.querySelector("#thirteen");
-const fourteen = document.querySelector("#fourteen");
-const fifteen = document.querySelector("#fifteen");
-const sixteen = document.querySelector("#sixteen");
-const seventeen = document.querySelector("#seventeen");
-const eighteen = document.querySelector("#eighteen");
-const nineteen = document.querySelector("#nineteen");
-const twenty = document.querySelector("#twenty");
-const twentyone = document.querySelector("#twentyone");
-
+const input = document.querySelector(".box input");
 const grid = document.querySelector(".grid-container");
-const input = document.querySelectorAll(".box > form > input")
 const messageContainer = document.querySelector(".message-container")
 
 /***** Game Logic Variables and State *****/
 
 /***** Functions and Game Logic *****/
-//check user input against stored values
+// initialize game
 
-const oneGuess= (e) => {
-  e.preventDefault();
-  if (one.value === "c") {
-    correctLetters.push(one.value)
-  }
+// check user input against stored values
+const updateValue = (e) => {
+ console.log(e.target.value)
+
+    //   if () {
+
+//   } else {
+//       wrongLetters.push(one.value)
+//   }
 };
 
-if (correctLetters.length === 21) {
-    messageContainer.classList.remove("hidden")
-}
+// query select for all inputs (.box input) for loop through array check .value against letterKey
+
+
+// if (correctLetters.length === 21) {
+//     messageContainer.classList.remove("hidden")
+// }
 
 /***** Event Listeners *****/
-// grid.addEventListener("submit", letterGuess);
 
-one.addEventListener("submit", oneGuess);
+grid.addEventListener("input", updateValue);

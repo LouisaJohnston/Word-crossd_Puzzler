@@ -36,7 +36,7 @@ h1 {
 }
 
 .grid-container p {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 
 .black-box {
@@ -49,18 +49,12 @@ h1 {
   display: inline;
 }
 
-form {
-  font-size: 2em;
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  margin-top: 22px;
-}
 
 input {
   border: 1px solid black;
   width: 20px;
   margin: auto;
+  display: block;
 }
 
 /***** Clue Styling *****/
