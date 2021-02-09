@@ -49,12 +49,12 @@ h1 {
   display: inline;
 }
 
-
 input {
   border: 1px solid black;
   width: 20px;
   margin: auto;
   display: block;
+  text-transform: uppercase;
 }
 
 /***** Clue Styling *****/
