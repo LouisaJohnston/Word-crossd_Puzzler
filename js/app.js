@@ -61,29 +61,33 @@ const messageContainer = document.querySelector(".message-container")
 /***** Functions and Game Logic *****/
 // initialize game
 
-//store input value for at key index
+//store input value for letterInput at key index
 const updateValue = (e) => {
     let boxNumber = e.target.id
     let inputValue = e.target.value
     letterInput[boxNumber] = inputValue
-    // check user input against stored values
-    for (letter in letterKey) {
-        if (letterInput[boxNumber] === letterKey[letter] ) {
-            console.log(`${inputValue} is correct`)
-        }
-    }
-    // if (letterInput === letterKey) {
-    //     messageContainer.classList.remove("hidden")
+    // check user input against stored values for checking button
+    // for (letter in letterKey) {
+    //     if (letterInput[boxNumber] === letterKey[boxNumber]) {
+    //         console.log(`${inputValue} is correct`)
+    //     }
     // } 
+    checkWin()
+
 };
 
-
-
-// query select for all inputs (.box input) for loop through array check .value against letterKey
-
-
-if (letterInput === letterKey) {
-    messageContainer.classList.remove("hidden")
+const checkWin = () => {
+    for (letter in letterKey) {
+        console.log(letter)
+        if (letterKey[letter] !== letterInput[letter]) {
+            return false
+        }
+        // if (Object.values(letterKey) === Object.values(letterInput)) {
+        //     messageContainer.classList.remove("hidden")
+        //     console.log("you win")
+        // }
+    }
+    return true
 }
 
 /***** Event Listeners *****/
