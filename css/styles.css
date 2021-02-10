@@ -1,34 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap");
 
 * {
   font-family: "Playfair Display", serif;
-  color: rgb(33, 42, 123);
+  color: #212a7b;
 }
 
 #background {
-    background-image: url(./pics/yellowedmarble.jpg);
-    /* box-shadow: inset 0 0 0 100px rgba(101, 131, 137, 1); */
-    background-size: cover;
-    position: relative;
-}
-
-.layer {
-  /* background-color: rgba(101, 131, 137,0.2); */
-  /* position: absolute;
-  display: flex; */
+  background-image: url(./pics/yellowedmarble.jpg);
+  /* box-shadow: inset 0 0 0 100px rgba(101, 131, 137, 1); */
+  background-size: cover;
+  position: relative;
 }
 
 h1 {
   text-align: center;
-  color: #AF2012;
+  color: #af2012;
   font-size: 4em;
   font-weight: 900;
+  margin-top: 10px;
 }
 
 .message-container {
   text-align: center;
   margin-top: 20px;
   font-size: 3em;
+}
+
+#button-container {
+  border: 3px solid rgb(101, 131, 137);
+  background-color: rgba(246, 245, 193, 0.8);
+  width: 1010px;
+  height: 50px;
+  margin: auto;
 }
 
 .hidden {
@@ -53,7 +56,7 @@ h1 {
 }
 
 .black-box {
-  border: 1px solid white;
+  /* border: 1px solid white; */
   background-color: rgb(101, 131, 137);
 }
 
@@ -66,20 +69,21 @@ div.box > p {
   padding-left: 6px;
   margin-top: 0;
   position: absolute;
-  font-weight: bold;
+  font-weight: 900;
+  color: #af2012;
 }
 
 input {
   width: 98%;
-  height: 93%;
+  height: 98%;
   text-transform: uppercase;
   font-size: 3em;
   text-align: center;
   color: transparent;
-  text-shadow: 0 0 0 #212A7B;
-  /* &:focus {
-      outline: none;
-  } */
+  text-shadow: 0 0 0 #212a7b;
+  font-weight: 700;
+  border-radius: 0%;
+  border: none;
 }
 
 /***** Clue Styling *****/
@@ -91,6 +95,7 @@ input {
   height: 400px;
   width: 400px;
   font-size: 1em;
+  background-color: rgba(246, 245, 193, 0.8);
   background-color: rgb(246, 245, 193);
 }
 
@@ -108,10 +113,17 @@ h3.direction-title {
   border-bottom: 2px solid rgb(101, 131, 137);
   padding-bottom: 15px;
   font-size: 1.5em;
+  font-weight: 900;
 }
 
 .clue {
-  padding-left: 12px;
-  padding-right: 10px;
+  padding-right: 17px;
+  padding-left: 0;
+  padding-top: 10px;
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+}
+
+#top-clue {
+  padding-top: 0;
 }
