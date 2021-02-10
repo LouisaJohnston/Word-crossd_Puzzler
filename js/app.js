@@ -21,7 +21,7 @@ const letterKey = {
   eighteen: "E",
   nineteen: "E",
   twenty: "L",
-  twentyone: "S",
+  twentyone: "S"
 };
 
 let letterInput = {
@@ -63,14 +63,18 @@ const messageContainer = document.querySelector(".message-container");
 const updateValue = (e) => {
   let boxNumber = e.target.id;
   let inputValue = e.target.value;
-  letterInput[boxNumber] = inputValue;
+  let uppercase = inputValue.toUpperCase()
+  letterInput[boxNumber] = uppercase;
+  console.log(uppercase)
   checkWin();
 };
+
+
 
 const checkWin = () => {
   for (letter in letterKey) {
     if (letterKey[letter] !== letterInput[letter]) {
-      return false;
+      return;
     }
   }
   return winState()
