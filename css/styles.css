@@ -1,25 +1,28 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap');
 
 * {
   font-family: "Playfair Display", serif;
   color: rgb(33, 42, 123);
 }
 
-/* .background {
-    background-image: url(./pics/Marble\ 3\ copy.jpg);
+#background {
+    background-image: url(./pics/yellowedmarble.jpg);
+    /* box-shadow: inset 0 0 0 100px rgba(101, 131, 137, 1); */
     background-size: cover;
     position: relative;
-} */
+}
 
 .layer {
-  background-color: rgba(101, 131, 137, 0.2);
-  /* position: absolute; */
+  /* background-color: rgba(101, 131, 137,0.2); */
+  /* position: absolute;
+  display: flex; */
 }
 
 h1 {
   text-align: center;
-  color: rgb(255, 72, 15);
-  font-size: 3.5em;
+  color: #AF2012;
+  font-size: 4em;
+  font-weight: 900;
 }
 
 .message-container {
