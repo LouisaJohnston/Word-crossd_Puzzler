@@ -128,19 +128,19 @@ const clearPuzzle = () => {
 
 // check puzzle answers
 const checkPuzzle = () => {
-  for (letter in letterInput) {
-    if (
-      letterInput[letter] !== "" &&
-      letterKey[letter] !== letterInput[letter]
-    ) {
-      for (i = 0; i < inputs.length; i++) {
-        if (inputs[i].value !== "" && inputs[i].value !== letterKey[letter]) {
-          inputs[i].classList.add("incorrect");
-          console.log(letterKey[letter]);
-        }
+    for (i = 0; i < inputs.length; i++) {
+      let inputUpper = inputs[i].value.toUpperCase();
+      if (inputs[i].value !== "" && inputUpper !== letterKey[inputs[i].id]) {
+        inputs[i].classList.add("incorrect");
+        grid.addEventListener("input", removeIncorrect);
       }
     }
-  }
+};
+
+const removeIncorrect = (e) => {
+  let targetInput = e.target;
+  targetInput.classList.remove("incorrect");
+  console.log(targetInput)
 };
 
 /***** Event Listeners *****/
