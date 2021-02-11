@@ -1,5 +1,8 @@
 /***** Constants *****/
+// for timer
+var totalSeconds = 0;
 
+// store correct values
 const letterKey = {
   one: "C",
   two: "H",
@@ -21,9 +24,10 @@ const letterKey = {
   eighteen: "E",
   nineteen: "E",
   twenty: "L",
-  twentyone: "S"
+  twentyone: "S",
 };
 
+// store user input
 let letterInput = {
   one: "",
   two: "",
@@ -49,41 +53,82 @@ let letterInput = {
 };
 
 /***** DOM References *****/
-// select specific input elements
-const inputs = document.querySelector(".box input");
+// for event listener on grid
 const grid = document.querySelector(".grid-container");
+//box input
+const inputs = document.querySelectorAll(".box > input");
+// display win message
 const messageContainer = document.querySelector(".message-container");
+// timer selectors
+const minutes = document.querySelector("#minutes");
+const seconds = document.querySelector("#seconds");
+// clear puzzle button
+const clearButton = document.querySelector("#clear-puzzle");
+console.log();
 
 /***** Game Logic Variables and State *****/
 
 /***** Functions and Game Logic *****/
 // initialize game
+const updateTimer = () => {
+  ++totalSeconds;
+  seconds.innerText = formatTimer(totalSeconds % 60);
+  minutes.innerText = formatTimer(parseInt(totalSeconds / 60));
+};
+
+function formatTimer(val) {
+  var valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
+
+countUp = setInterval(updateTimer, 1000);
 
 //store input value for letterInput at key index
 const updateValue = (e) => {
   let boxNumber = e.target.id;
   let inputValue = e.target.value;
-  let uppercase = inputValue.toUpperCase()
+  let uppercase = inputValue.toUpperCase();
   letterInput[boxNumber] = uppercase;
-  console.log(uppercase)
   checkWin();
 };
 
-
-
+// check if puzzle has been solved
 const checkWin = () => {
   for (letter in letterKey) {
     if (letterKey[letter] !== letterInput[letter]) {
       return;
     }
   }
-  return winState()
+  return winState();
 };
 
+// display winState message
 const winState = () => {
-    messageContainer.classList.remove("hidden")
-}
+  messageContainer.classList.remove("hidden");
+  clearInterval(countUp);
+  //remove button divs, add button to restart game
+};
+
+// clear the puzzle
+const clearPuzzle = () => {
+  for (i=0; i < inputs.length; i++) {
+    inputs[i].value = "";
+  }
+  for (letter in letterInput) {
+    letterInput[letter] = "";
+  }
+};
 
 /***** Event Listeners *****/
-
+// update letterInput
 grid.addEventListener("input", updateValue);
+document.addEventListener("DOMContentLoaded", updateTimer);
+clearButton.addEventListener("click", clearPuzzle);
+
+// TODO
+// clear function
+// auto check

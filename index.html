@@ -8,84 +8,89 @@
   <body class="layer" id="background">
     <h1>Word-cross'd Puzzler</h1>
     <div class="message-container hidden">You won!</div>
-    <div id="button-container">
-        
+    <div id="nav-container">
+      <div id="timer">
+        <label id="minutes">00</label>:<label id="seconds">00</label>
+      </div>
+      <div id="button-holder">
+        <button id="clear-puzzle" type="reset">Clear Puzzle</button>
+      </div>
     </div>
     <div id="game-container">
       <div class="grid-container">
         <div class="black-box"></div>
         <div class="box">
           <p>1</p>
-          <input id="one" type="text" autocomplete="off" />
+          <input id="one" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="box">
           <p>2</p>
-          <input id="two" type="text" autocomplete="off" />
+          <input id="two" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="box">
           <p>3</p>
-          <input id="three" type="text" autocomplete="off" />
+          <input id="three" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="box">
           <p>4</p>
-          <input id="four" type="text" autocomplete="off" />
+          <input id="four" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="black-box"></div>
         <div class="box">
           <p>5</p>
-          <input id="five" type="text" autocomplete="off" />
+          <input id="five" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="box">
-          <input id="six" type="text" autocomplete="off" />
+          <input id="six" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="box">
-          <input id="seven" type="text" autocomplete="off" />
+          <input id="seven" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="box">
-          <input id="eight" type="text" autocomplete="off" />
+          <input id="eight" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="box">
           <p>6</p>
-          <input id="nine" type="text" autocomplete="off" />
+          <input id="nine" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="box">
-          <input id="ten" type="text" autocomplete="off" />
+          <input id="ten" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="box">
-          <input id="eleven" type="text" autocomplete="off" />
+          <input id="eleven" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="box">
-          <input id="twelve" type="text" autocomplete="off" />
+          <input id="twelve" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="box">
-          <input id="thirteen" type="text" autocomplete="off" />
+          <input id="thirteen" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="box">
           <p>7</p>
-          <input id="fourteen" type="text" autocomplete="off" />
+          <input id="fourteen" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="box">
-          <input id="fifteen" type="text" autocomplete="off" />
+          <input id="fifteen" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="box">
-          <input id="sixteen" type="text" autocomplete="off" />
+          <input id="sixteen" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="box">
-          <input id="seventeen" type="text" autocomplete="off" />
+          <input id="seventeen" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="black-box"></div>
         <div class="box">
           <p>8</p>
-          <input id="eighteen" type="text" autocomplete="off" />
+          <input id="eighteen" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="box">
-          <input id="nineteen" type="text" autocomplete="off" />
+          <input id="nineteen" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="box">
-          <input id="twenty" type="text" autocomplete="off" />
+          <input id="twenty" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="box">
-          <input id="twentyone" type="text" autocomplete="off" />
+          <input id="twentyone" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="black-box"></div>
       </div>
@@ -93,21 +98,27 @@
         <div class="across">
           <h3 class="direction-title">Across</h3>
           <ol>
-              <li id="top-clue" class="clue">She won an Oscar for her role in "Moonstruck" (1987)</li>
-              <li class="clue" value=5>Rob of Brat Pack and "Parks and Rec" fame</li>
-              <li class="clue">Breath in suspense</li>
-              <li class="clue">A way for things to remain happily, after</li>
-              <li class="clue">Careful, they might be shrieking!</li>
+            <li id="top-clue" class="clue">
+              She won an Oscar for her role in "Moonstruck" (1987)
+            </li>
+            <li class="clue" value="5">
+              Rob of Brat Pack and "Parks and Rec" fame
+            </li>
+            <li class="clue">Breath in suspense</li>
+            <li class="clue">A way for things to remain happily, after</li>
+            <li class="clue">Careful, they might be shrieking!</li>
           </ol>
         </div>
         <div class="down">
           <h3 class="direction-title">Down</h3>
           <ol>
-              <li id="top-clue" class="clue">You might have done it to meat in the past</li>
-              <li class="clue">The Eagles have mixed feelings on one called California</li>
-              <li class="clue">Pitchers</li>
-              <li class="clue">___ Dead Redemption</li>
-              <li class="clue" value=6>Perhaps a worker or a queen</li>
+            <li id="top-clue" class="clue">It may help you keep the rhythm</li>
+            <li class="clue">
+              The Eagles have mixed feelings on one called "California"
+            </li>
+            <li class="clue">Pitchers</li>
+            <li class="clue">___ Dead Redemption</li>
+            <li class="clue" value="6">Perhaps a worker or a queen</li>
           </ol>
         </div>
       </div>

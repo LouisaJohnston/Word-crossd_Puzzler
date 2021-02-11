@@ -21,7 +21,7 @@ The user completes the puzzle by first reading the provided clues and trying to 
 
 ## MVP checklist
 * User input is checked against correct letters.
-* If all input matches the pretdetermined correct lettersm a message displays indicating that the user has one.
+* If all input matches the pretdetermined correct letters, a message displays indicating that the user has won.
 * User is able to alter previous inputs without reloading the game.
 
 ## Stretch goals
