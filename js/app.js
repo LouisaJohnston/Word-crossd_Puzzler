@@ -130,5 +130,8 @@ document.addEventListener("DOMContentLoaded", updateTimer);
 clearButton.addEventListener("click", clearPuzzle);
 
 // TODO
-// clear function
+// format nav bar
+// remove nav div when you win
 // auto check
+// highlight selected clue
+// highlight word letter is in

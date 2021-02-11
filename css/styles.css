@@ -40,6 +40,13 @@ h1 {
   flex-direction: row;
 }
 
+.button {
+    font-size: 1em;
+    font-weight: 700;
+    background-color: white;
+    border: 1px solid rgb(101, 131, 137);;
+}
+
 #timer {
   font-size: 1.5em;
   padding-left: 20px;
@@ -52,6 +59,7 @@ h1 {
   padding: 10px;
   margin-right: 0;
 }
+
 
 #minutes,
 #seconds {
