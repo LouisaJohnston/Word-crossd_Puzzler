@@ -64,7 +64,10 @@ const minutes = document.querySelector("#minutes");
 const seconds = document.querySelector("#seconds");
 // clear puzzle button
 const clearButton = document.querySelector("#clear-puzzle");
-console.log();
+//check puzzle button
+const checkButton = document.querySelector("#check-puzzle");
+
+const boxes = document.querySelector(".box");
 
 /***** Game Logic Variables and State *****/
 
@@ -115,11 +118,28 @@ const winState = () => {
 
 // clear the puzzle
 const clearPuzzle = () => {
-  for (i=0; i < inputs.length; i++) {
+  for (i = 0; i < inputs.length; i++) {
     inputs[i].value = "";
   }
   for (letter in letterInput) {
     letterInput[letter] = "";
+  }
+};
+
+// check puzzle answers
+const checkPuzzle = () => {
+  for (letter in letterInput) {
+    if (
+      letterInput[letter] !== "" &&
+      letterKey[letter] !== letterInput[letter]
+    ) {
+      for (i = 0; i < inputs.length; i++) {
+        if (inputs[i].value !== "" && inputs[i].value !== letterKey[letter]) {
+          inputs[i].classList.add("incorrect");
+          console.log(letterKey[letter]);
+        }
+      }
+    }
   }
 };
 
@@ -128,6 +148,7 @@ const clearPuzzle = () => {
 grid.addEventListener("input", updateValue);
 document.addEventListener("DOMContentLoaded", updateTimer);
 clearButton.addEventListener("click", clearPuzzle);
+checkButton.addEventListener("click", checkPuzzle);
 
 // TODO
 // format nav bar

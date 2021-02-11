@@ -7,7 +7,6 @@
 
 #background {
   background-image: url(./pics/yellowedmarble.jpg);
-  /* box-shadow: inset 0 0 0 100px rgba(101, 131, 137, 1); */
   background-size: cover;
   position: relative;
 }
@@ -36,7 +35,7 @@ h1 {
   margin: auto;
   display: flex;
   align-items: center;
-  justify-items: flex-start;
+  justify-content: space-between;
   flex-direction: row;
 }
 
@@ -55,7 +54,6 @@ h1 {
 }
 
 #button-holder {
-  justify-self: flex-end;
   padding: 10px;
   margin-right: 0;
 }
@@ -117,6 +115,11 @@ input {
   border-radius: 0%;
   border: none;
 }
+
+.incorrect {
+  color: #af2012;
+  text-decoration: line-through;
+} 
 
 /***** Clue Styling *****/
 
