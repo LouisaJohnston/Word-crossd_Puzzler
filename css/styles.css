@@ -64,6 +64,24 @@ h1 {
   color: #af2012;
 }
 
+#instructions-container {
+  border: 3px solid rgb(101, 131, 137);
+  background-color: rgba(246, 245, 193, 0.8);
+  width: 80.5%;
+  margin: auto;
+  margin-top: 20px;
+  font-family: "Playfair Display", serif;
+}
+
+#instructions-container > h3, p {
+  text-align: center;
+}
+
+#hide-instructions {
+  margin: 10px;
+  width: 150px;
+}
+
 .hidden {
   display: none;
 }
@@ -117,7 +135,8 @@ input {
 }
 
 .incorrect {
-  color: #af2012;
+  color: transparent;
+  text-shadow: 0 0 0 #af2012;
   text-decoration: line-through;
 } 
 

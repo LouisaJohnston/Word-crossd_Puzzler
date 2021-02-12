@@ -53,21 +53,17 @@ let letterInput = {
 };
 
 /***** DOM References *****/
-// for event listener on grid
 const grid = document.querySelector(".grid-container");
-//box input
 const inputs = document.querySelectorAll(".box > input");
-// display win message
 const messageContainer = document.querySelector(".message-container");
-// timer selectors
 const minutes = document.querySelector("#minutes");
 const seconds = document.querySelector("#seconds");
-// clear puzzle button
 const clearButton = document.querySelector("#clear-puzzle");
-//check puzzle button
 const checkButton = document.querySelector("#check-puzzle");
-
-const boxes = document.querySelector(".box");
+const instructions = document.querySelector("#instructions");
+const hideInstructionsButton = document.querySelector("#hide-instructions")
+const instructionsContainer = document.querySelector("#instructions-container")
+console.log(instructionsContainer)
 
 /***** Game Logic Variables and State *****/
 
@@ -143,16 +139,26 @@ const removeIncorrect = (e) => {
   console.log(targetInput)
 };
 
+// show instructions
+const showInstructions = () => {
+  instructionsContainer.classList.remove("hidden");
+}
+
+// hide instructions
+const hideInstructions = () => {
+  instructionsContainer.classList.add("hidden");
+}
+
 /***** Event Listeners *****/
 // update letterInput
 grid.addEventListener("input", updateValue);
 document.addEventListener("DOMContentLoaded", updateTimer);
 clearButton.addEventListener("click", clearPuzzle);
 checkButton.addEventListener("click", checkPuzzle);
+instructions.addEventListener("click", showInstructions);
+hideInstructionsButton.addEventListener("click", hideInstructions);
 
 // TODO
-// format nav bar
 // remove nav div when you win
-// auto check
 // highlight selected clue
 // highlight word letter is in
