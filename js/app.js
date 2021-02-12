@@ -63,8 +63,7 @@ const checkButton = document.querySelector("#check-puzzle");
 const instructions = document.querySelector("#instructions");
 const hideInstructionsButton = document.querySelector("#hide-instructions")
 const instructionsContainer = document.querySelector("#instructions-container")
-console.log(instructionsContainer)
-
+const clueContainer = document.querySelector(".clue-container")
 /***** Game Logic Variables and State *****/
 
 /***** Functions and Game Logic *****/
@@ -136,7 +135,6 @@ const checkPuzzle = () => {
 const removeIncorrect = (e) => {
   let targetInput = e.target;
   targetInput.classList.remove("incorrect");
-  console.log(targetInput)
 };
 
 // show instructions
@@ -149,6 +147,12 @@ const hideInstructions = () => {
   instructionsContainer.classList.add("hidden");
 }
 
+// hightlight selected clue
+const highlightClue = (e) => {
+  let targetClueSpan = e.target.span
+  targetClueSpan.classList.add("cream-highlight")
+}
+
 /***** Event Listeners *****/
 // update letterInput
 grid.addEventListener("input", updateValue);
@@ -157,8 +161,11 @@ clearButton.addEventListener("click", clearPuzzle);
 checkButton.addEventListener("click", checkPuzzle);
 instructions.addEventListener("click", showInstructions);
 hideInstructionsButton.addEventListener("click", hideInstructions);
+clueContainer.addEventListener("click", highlightClue);
 
 // TODO
 // remove nav div when you win
 // highlight selected clue
 // highlight word letter is in
+
+// put clues in spans
