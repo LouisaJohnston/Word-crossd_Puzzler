@@ -92,6 +92,9 @@ const updateValue = (e) => {
   let uppercase = inputValue.toUpperCase();
   letterInput[boxNumber] = uppercase;
   checkWin();
+  if (inputValue.length === 1) {
+    
+  }
 };
 
 // check if puzzle has been solved

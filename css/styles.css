@@ -67,10 +67,13 @@ h1 {
 }
 
 #instructions-container {
+  /* display: inline; */
+  position: absolute;
+  z-index: 99 !important;
   border: 3px solid rgb(101, 131, 137);
-  background-color: rgba(246, 245, 193, 0.8);
+  background-color: rgba(246, 245, 193, 0.9);
   width: 80.5%;
-  margin: auto;
+  margin-left: 9.5%;
   margin-top: 20px;
   font-family: "Playfair Display", serif;
   filter: drop-shadow(10px 10px 6px rgba(33, 42, 123, .4));
