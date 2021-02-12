@@ -1,8 +1,8 @@
 /***** Constants *****/
 // for timer
 var totalSeconds = 0;
-
 let isGameWon = false;
+let directionAcross = true;
 
 // store correct values
 const letterKey = {
@@ -28,6 +28,35 @@ const letterKey = {
   twenty: "L",
   twentyone: "S",
 };
+
+const letterKeyDown = {
+  one: "C",
+  two: "L",
+  three: "A",
+  four: "V",
+  five: "E",
+  six: "H",
+  seven: "O",
+  eight: "T",
+  nine: "E",
+  ten: "L",
+  eleven: "E",
+  twelve: "W",
+  thirteen: "E",
+  fourteen: "R",
+  fifteen: "S",
+  sixteen: "R",
+  seventeen: "E",
+  eighteen: "D",
+  nineteen: "B",
+  twenty: "E",
+  twentyone: "E",
+};
+
+// store flow sequence
+let flowSequence = {
+  one: "two",
+}
 
 // store user input
 let letterInput = {
@@ -63,10 +92,12 @@ const seconds = document.querySelector("#seconds");
 const clearButton = document.querySelector("#clear-puzzle");
 const checkButton = document.querySelector("#check-puzzle");
 const instructions = document.querySelector("#instructions");
-const hideInstructionsButton = document.querySelector("#hide-instructions")
-const instructionsContainer = document.querySelector("#instructions-container")
-const clueContainer = document.querySelector(".clue-container")
-const reset = document.querySelector("#reset")
+const hideInstructionsButton = document.querySelector("#hide-instructions");
+const instructionsContainer = document.querySelector("#instructions-container");
+const clueContainer = document.querySelector(".clue-container");
+const reset = document.querySelector("#reset");
+const reveal = document.querySelector("#reveal-puzzle");
+console.log(reveal);
 
 /***** Functions and Game Logic *****/
 // initialize game
@@ -94,10 +125,18 @@ const updateValue = (e) => {
   let uppercase = inputValue.toUpperCase();
   letterInput[boxNumber] = uppercase;
   checkWin();
-  if (inputValue.length === 1) {
-
-  }
 };
+
+// focus on next input box
+const focusNext = (e) => {
+  
+  if (directionAcross === true) {
+    const nextID = flowSequence[e.target.id]
+    document.querySelector("#" + nextID).focus()
+  }
+
+};
+
 
 // check if puzzle has been solved
 const checkWin = () => {
@@ -111,13 +150,13 @@ const checkWin = () => {
 
 // display winState message
 const winState = () => {
-  isGameWon = true
+  isGameWon = true;
   messageContainer.classList.remove("hidden");
   reset.classList.remove("hidden");
   if (isGameWon === true) {
     clearInterval(countUp);
   }
-  console.log(isGameWon)
+  console.log(isGameWon);
 };
 
 // clear the puzzle
@@ -132,13 +171,13 @@ const clearPuzzle = () => {
 
 // check puzzle answers
 const checkPuzzle = () => {
-    for (i = 0; i < inputs.length; i++) {
-      let inputUpper = inputs[i].value.toUpperCase();
-      if (inputs[i].value !== "" && inputUpper !== letterKey[inputs[i].id]) {
-        inputs[i].classList.add("incorrect");
-        grid.addEventListener("input", removeIncorrect);
-      }
+  for (i = 0; i < inputs.length; i++) {
+    let inputUpper = inputs[i].value.toUpperCase();
+    if (inputs[i].value !== "" && inputUpper !== letterKey[inputs[i].id]) {
+      inputs[i].classList.add("incorrect");
+      grid.addEventListener("input", removeIncorrect);
     }
+  }
 };
 
 const removeIncorrect = (e) => {
@@ -149,18 +188,18 @@ const removeIncorrect = (e) => {
 // show instructions
 const showInstructions = () => {
   instructionsContainer.classList.remove("hidden");
-}
+};
 
 // hide instructions
 const hideInstructions = () => {
   instructionsContainer.classList.add("hidden");
-}
+};
 
 // hightlight selected clue
 const highlightClue = (e) => {
-  let targetClueSpan = e.target.span
-  targetClueSpan.classList.add("cream-highlight")
-}
+  let targetClueSpan = e.target.span;
+  targetClueSpan.classList.add("cream-highlight");
+};
 
 // reset game
 const resetGame = () => {
@@ -169,20 +208,28 @@ const resetGame = () => {
   resetTimer();
   messageContainer.classList.add("hidden");
   reset.classList.add("hidden");
-  console.log(isGameWon)
-}
-
-console.log(isGameWon)
+  console.log(isGameWon);
+};
 
 const resetTimer = () => {
-  seconds.innerText = "00";
-  minutes.innerText = "00";
+  countUp = setInterval(updateTimer, 1000)
+  totalSeconds = 0;
   updateTimer();
-}
+};
+
+// reveal puzzle
+const revealPuzzle = () => {
+  for (i = 0; i < inputs.length; i++) {
+    inputs[i].value = letterKey[inputs[i].id];
+  }
+  reset.classList.remove("hidden");
+  clearInterval(countUp);
+};
 
 /***** Event Listeners *****/
 // update letterInput
 grid.addEventListener("input", updateValue);
+grid.addEventListener("input", focusNext);
 document.addEventListener("DOMContentLoaded", updateTimer);
 clearButton.addEventListener("click", clearPuzzle);
 checkButton.addEventListener("click", checkPuzzle);
@@ -190,6 +237,7 @@ instructions.addEventListener("click", showInstructions);
 hideInstructionsButton.addEventListener("click", hideInstructions);
 clueContainer.addEventListener("click", highlightClue);
 reset.addEventListener("click", resetGame);
+reveal.addEventListener("click", revealPuzzle);
 
 // TODO
 // remove nav div when you win
