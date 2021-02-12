@@ -2,6 +2,8 @@
 // for timer
 var totalSeconds = 0;
 
+let isGameWon = false;
+
 // store correct values
 const letterKey = {
   one: "C",
@@ -64,7 +66,7 @@ const instructions = document.querySelector("#instructions");
 const hideInstructionsButton = document.querySelector("#hide-instructions")
 const instructionsContainer = document.querySelector("#instructions-container")
 const clueContainer = document.querySelector(".clue-container")
-/***** Game Logic Variables and State *****/
+const reset = document.querySelector("#reset")
 
 /***** Functions and Game Logic *****/
 // initialize game
@@ -93,7 +95,7 @@ const updateValue = (e) => {
   letterInput[boxNumber] = uppercase;
   checkWin();
   if (inputValue.length === 1) {
-    
+
   }
 };
 
@@ -109,9 +111,13 @@ const checkWin = () => {
 
 // display winState message
 const winState = () => {
+  isGameWon = true
   messageContainer.classList.remove("hidden");
-  clearInterval(countUp);
-  //remove button divs, add button to restart game
+  reset.classList.remove("hidden");
+  if (isGameWon === true) {
+    clearInterval(countUp);
+  }
+  console.log(isGameWon)
 };
 
 // clear the puzzle
@@ -156,6 +162,24 @@ const highlightClue = (e) => {
   targetClueSpan.classList.add("cream-highlight")
 }
 
+// reset game
+const resetGame = () => {
+  isGameWon = false;
+  clearPuzzle();
+  resetTimer();
+  messageContainer.classList.add("hidden");
+  reset.classList.add("hidden");
+  console.log(isGameWon)
+}
+
+console.log(isGameWon)
+
+const resetTimer = () => {
+  seconds.innerText = "00";
+  minutes.innerText = "00";
+  updateTimer();
+}
+
 /***** Event Listeners *****/
 // update letterInput
 grid.addEventListener("input", updateValue);
@@ -165,6 +189,7 @@ checkButton.addEventListener("click", checkPuzzle);
 instructions.addEventListener("click", showInstructions);
 hideInstructionsButton.addEventListener("click", hideInstructions);
 clueContainer.addEventListener("click", highlightClue);
+reset.addEventListener("click", resetGame);
 
 // TODO
 // remove nav div when you win

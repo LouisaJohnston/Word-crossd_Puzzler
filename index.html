@@ -7,14 +7,14 @@
   </head>
   <body class="layer" id="background">
     <h1>Word-cross'd Puzzler</h1>
-    <div class="message-container hidden">You won!</div>
     <div id="nav-container">
       <div id="timer">
         <label id="minutes">00</label>:<label id="seconds">00</label>
       </div>
+      <div class="message-container hidden">You won!</div>
       <div id="button-holder">
-        <button class ="button" id="clear-puzzle" type="reset">Clear Puzzle</button>
-        <button class ="button" id="check-puzzle" type="button">Check Puzzle</button>
+        <button class ="button" id="clear-puzzle" type="button">Clear</button>
+        <button class ="button" id="check-puzzle" type="button">Check</button>
         <button class ="button" id="instructions" type="button">Instructions</button>
       </div>
     </div>
@@ -101,6 +101,9 @@
           <input id="twentyone" type="text" autocomplete="off" maxlength=1 />
         </div>
         <div class="black-box"></div>
+      </div>
+      <div>
+        <button class ="button hidden" id="reset" type="button" >Play again?</button>
       </div>
       <div class="clue-container">
         <div class="across">
