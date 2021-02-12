@@ -114,6 +114,8 @@ const instructionsContainer = document.querySelector("#instructions-container");
 const clueContainer = document.querySelector(".clue-container");
 const reset = document.querySelector("#reset");
 const reveal = document.querySelector("#reveal-puzzle");
+const clues = document.querySelectorAll(".clue")
+console.log(clues)
 
 /***** Functions and Game Logic *****/
 // initialize game
@@ -213,8 +215,13 @@ const hideInstructions = () => {
 
 // hightlight selected clue
 const highlightClue = (e) => {
-  let targetClueSpan = e.target.span;
-  targetClueSpan.classList.add("cream-highlight");
+  let targetClue = e.target;
+  targetClue.classList.add("cream-highlight");
+  for (i = 0; i < clues.length; i++) {
+    if (clues[i] !== targetClue) {
+      clues[i].classList.remove("cream-highlight");
+    }
+  } highlightLine ();
 };
 
 // reset game
@@ -249,9 +256,10 @@ const toggleDirection = () => {
   }
 };
 
-const highlightLine = () => {
+const highlightLine = (e) => {
+  let targetWord = e.target
   if (directionAcross === true) {
-    
+    if (e.target.id === )
   } else {
     
   }
