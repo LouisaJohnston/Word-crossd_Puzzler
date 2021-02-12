@@ -52,10 +52,10 @@ let flowSequence = {
   nineteen: "twenty",
   twenty: "twentyone",
   twentyone: "one",
-}
+};
 
 let flowSequenceDown = {
-  one: "five", 
+  one: "five",
   five: "ten",
   ten: "fifteen",
   fifteen: "nineteen",
@@ -72,8 +72,8 @@ let flowSequenceDown = {
   twentyone: "four",
   four: "eight",
   eight: "thirteen",
-  thirteen: ""
-}
+  thirteen: "",
+};
 
 // store user input
 let letterInput = {
@@ -146,15 +146,13 @@ const updateValue = (e) => {
 // focus on next input box
 const focusNext = (e) => {
   if (directionAcross === true) {
-    const nextID = flowSequence[e.target.id]
-    document.querySelector("#" + nextID).focus()
+    const nextID = flowSequence[e.target.id];
+    document.querySelector("#" + nextID).focus();
   } else {
-    const nextDownID = flowSequenceDown[e.target.id]
-    document.querySelector("#" + nextDownID).focus()
+    const nextDownID = flowSequenceDown[e.target.id];
+    document.querySelector("#" + nextDownID).focus();
   }
-
 };
-
 
 // check if puzzle has been solved
 const checkWin = () => {
@@ -229,7 +227,7 @@ const resetGame = () => {
 };
 
 const resetTimer = () => {
-  countUp = setInterval(updateTimer, 1000)
+  countUp = setInterval(updateTimer, 1000);
   totalSeconds = 0;
   updateTimer();
 };
@@ -243,6 +241,22 @@ const revealPuzzle = () => {
   clearInterval(countUp);
 };
 
+const toggleDirection = () => {
+  if (directionAcross === true) {
+    directionAcross = false;
+  } else {
+    directionAcross = true;
+  }
+};
+
+const highlightLine = () => {
+  if (directionAcross === true) {
+    
+  } else {
+    
+  }
+}
+
 /***** Event Listeners *****/
 // update letterInput
 grid.addEventListener("input", updateValue);
@@ -255,6 +269,8 @@ hideInstructionsButton.addEventListener("click", hideInstructions);
 clueContainer.addEventListener("click", highlightClue);
 reset.addEventListener("click", resetGame);
 reveal.addEventListener("click", revealPuzzle);
+grid.addEventListener("dblclick", toggleDirection);
+grid.addEventListener("click", highlightLine);
 
 // TODO
 // remove nav div when you win
