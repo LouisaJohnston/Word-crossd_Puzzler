@@ -29,33 +29,50 @@ const letterKey = {
   twentyone: "S",
 };
 
-const letterKeyDown = {
-  one: "C",
-  two: "L",
-  three: "A",
-  four: "V",
-  five: "E",
-  six: "H",
-  seven: "O",
-  eight: "T",
-  nine: "E",
-  ten: "L",
-  eleven: "E",
-  twelve: "W",
-  thirteen: "E",
-  fourteen: "R",
-  fifteen: "S",
-  sixteen: "R",
-  seventeen: "E",
-  eighteen: "D",
-  nineteen: "B",
-  twenty: "E",
-  twentyone: "E",
-};
-
 // store flow sequence
 let flowSequence = {
   one: "two",
+  two: "three",
+  three: "four",
+  four: "five",
+  five: "six",
+  six: "seven",
+  seven: "eight",
+  eight: "nine",
+  nine: "ten",
+  ten: "eleven",
+  eleven: "twelve",
+  twelve: "thirteen",
+  thirteen: "fourteen",
+  fourteen: "fifteen",
+  fifteen: "sixteen",
+  sixteen: "seventeen",
+  seventeen: "eighteen",
+  eighteen: "nineteen",
+  nineteen: "twenty",
+  twenty: "twentyone",
+  twentyone: "one",
+}
+
+let flowSequenceDown = {
+  one: "five", 
+  five: "ten",
+  ten: "fifteen",
+  fifteen: "nineteen",
+  nineteen: "two",
+  two: "six",
+  six: "eleven",
+  eleven: "sixteen",
+  sixteen: "twenty",
+  twenty: "three",
+  three: "seven",
+  seven: "twelve",
+  twelve: "seventeen",
+  seventeen: "twentyone",
+  twentyone: "four",
+  four: "eight",
+  eight: "thirteen",
+  thirteen: ""
 }
 
 // store user input
@@ -97,7 +114,6 @@ const instructionsContainer = document.querySelector("#instructions-container");
 const clueContainer = document.querySelector(".clue-container");
 const reset = document.querySelector("#reset");
 const reveal = document.querySelector("#reveal-puzzle");
-console.log(reveal);
 
 /***** Functions and Game Logic *****/
 // initialize game
@@ -129,10 +145,12 @@ const updateValue = (e) => {
 
 // focus on next input box
 const focusNext = (e) => {
-  
   if (directionAcross === true) {
     const nextID = flowSequence[e.target.id]
     document.querySelector("#" + nextID).focus()
+  } else {
+    const nextDownID = flowSequenceDown[e.target.id]
+    document.querySelector("#" + nextDownID).focus()
   }
 
 };
@@ -208,7 +226,6 @@ const resetGame = () => {
   resetTimer();
   messageContainer.classList.add("hidden");
   reset.classList.add("hidden");
-  console.log(isGameWon);
 };
 
 const resetTimer = () => {

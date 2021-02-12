@@ -20,11 +20,12 @@
       </div>
     </div>
     <div id="instructions-container" class="hidden">
-      <h3>Instructions</h3>
+      <h2>Instructions</h2>
       <p>Use the provided clues to solve the crossword puzzle by typing letters into the puzzle grid. The goal is to solve the puzzle as quickly as possible. Use "Delete" to overwrite letters that you think are incorrect.</p>
       <p>Happy puzzling!</p>
-      <div></div>
-      <button class ="button" id="hide-instructions" type="button">Hide instructions</button>
+      <div id="hide-instructions-holder">
+        <button class ="button" id="hide-instructions" type="button">Hide instructions</button>
+      </div>
     </div>
     <div id="game-container">
       <div class="grid-container">
@@ -104,7 +105,7 @@
         </div>
         <div class="black-box"></div>
       </div>
-      <div>
+      <div id="reset-holder">
         <button class ="button hidden" id="reset" type="button" >Play again?</button>
       </div>
       <div class="clue-container">
