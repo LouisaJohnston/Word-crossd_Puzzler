@@ -72,7 +72,10 @@ let flowSequenceDown = {
   twentyone: "four",
   four: "eight",
   eight: "thirteen",
-  thirteen: "",
+  thirteen: "nine",
+  nine: "fourteen",
+  fourteen: "eighteen",
+  eighteen: "one"
 };
 
 // store user input
