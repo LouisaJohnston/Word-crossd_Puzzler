@@ -153,6 +153,7 @@ div.box > p {
   position: absolute;
   font-weight: 900;
   color: #af2012;
+  z-index: 99;
 }
 
 input {
