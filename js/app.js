@@ -259,36 +259,36 @@ const toggleDirection = () => {
   }
 };
 
-const highlightLine = (e) => {
-  let targetLetter = e.target;
-  let targetID = e.target.id;
-    targetLetter.classList.add("highlight-letter");
-    // move this chunk into focus^^
-  for (i = 0; i < inputs.length; i++) {
-    if (inputs[i].id !== targetID)
-    inputs[i].classList.remove("highlight-letter");
-  }
-  if (directionAcross === true) {
-    if (targetID.includes("one" || "two" || "three" || "four")) {
-      for (i = 0; i < 4; i++) {
-        inputs[i].classList.add("word-highlight");
-      }
-      for (i = 5; i < inputs.length; i++) {
-        inputs[i].classList.remove("word-highlight");
-      }
-    } else if (targetID.includes("five" || "six" || "seven" || "eight")){
-      for (i = 5; i < 8; i++) {
-        inputs[i].classList.add("word-highlight");
-      }
-      for (i = 0; i < 5; i++) {
-        inputs[i].classList.remove("word-highlight");
-      }
-      // for (i = 8; i < 21; i++) {
-      //   inputs[i].classList.remove("word-highlight");
-      // }
-    } 
-  }
-};
+// const highlightLine = (e) => {
+//   let targetLetter = e.target;
+//   let targetID = e.target.id;
+//     targetLetter.classList.add("highlight-letter");
+//     // move this chunk into focus^^
+//   for (i = 0; i < inputs.length; i++) {
+//     if (inputs[i].id !== targetID)
+//     inputs[i].classList.remove("highlight-letter");
+//   }
+//   if (directionAcross === true) {
+//     if (targetID.includes("one" || "two" || "three" || "four")) {
+//       for (i = 0; i < 4; i++) {
+//         inputs[i].classList.add("word-highlight");
+//       }
+//       for (i = 5; i < inputs.length; i++) {
+//         inputs[i].classList.remove("word-highlight");
+//       }
+//     } else if (targetID.includes("five" || "six" || "seven" || "eight")){
+//       for (i = 5; i < 8; i++) {
+//         inputs[i].classList.add("word-highlight");
+//       }
+//       for (i = 0; i < 5; i++) {
+//         inputs[i].classList.remove("word-highlight");
+//       }
+//       // for (i = 8; i < 21; i++) {
+//       //   inputs[i].classList.remove("word-highlight");
+//       // }
+//     } 
+//   }
+// };
 
 /***** Event Listeners *****/
 // update letterInput
@@ -302,7 +302,7 @@ hideInstructionsButton.addEventListener("click", hideInstructions);
 reset.addEventListener("click", resetGame);
 reveal.addEventListener("click", revealPuzzle);
 grid.addEventListener("dblclick", toggleDirection);
-grid.addEventListener("click", highlightLine);
+// grid.addEventListener("click", highlightLine);
 // clueContainer.addEventListener("click", highlightClue);
 
 // TODO
