@@ -221,3 +221,12 @@ h3.direction-title {
   position: relative;
   width: 83%;
 }
+
+.word-highlight {
+  background-color: rgba(246, 245, 193, 0.8);
+  position: relative;
+}
+
+.highlight-letter {
+  background-color: rgba(255, 255, 255, 0.8);
+}

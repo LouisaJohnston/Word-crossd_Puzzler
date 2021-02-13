@@ -114,8 +114,7 @@ const instructionsContainer = document.querySelector("#instructions-container");
 const clueContainer = document.querySelector(".clue-container");
 const reset = document.querySelector("#reset");
 const reveal = document.querySelector("#reveal-puzzle");
-const clues = document.querySelectorAll(".clue")
-console.log(clues)
+const clues = document.querySelectorAll(".clue");
 
 /***** Functions and Game Logic *****/
 // initialize game
@@ -214,15 +213,16 @@ const hideInstructions = () => {
 };
 
 // hightlight selected clue
-const highlightClue = (e) => {
-  let targetClue = e.target;
-  targetClue.classList.add("cream-highlight");
-  for (i = 0; i < clues.length; i++) {
-    if (clues[i] !== targetClue) {
-      clues[i].classList.remove("cream-highlight");
-    }
-  } highlightLine ();
-};
+// const highlightClue = (e) => {
+//   let targetClue = e.target;
+//   targetClue.classList.add("cream-highlight");
+//   for (i = 0; i < clues.length; i++) {
+//     if (clues[i] !== targetClue) {
+//       clues[i].classList.remove("cream-highlight");
+//     }
+//   }
+//   highlightLine();
+// };
 
 // reset game
 const resetGame = () => {
@@ -256,14 +256,18 @@ const toggleDirection = () => {
   }
 };
 
-const highlightLine = (e) => {
-  let targetWord = e.target
-  if (directionAcross === true) {
-    if (e.target.id === )
-  } else {
-    
-  }
-}
+// const highlightLine = (e) => {
+//   let targetLetter = e.target;
+//   targetLetter.classList.add("highlight-letter");
+//   let targetID = e.target.id;
+//   if (directionAcross === true) {
+//     if (targetID.includes("one" || "two" || "three" || "four")) {
+//       for (i = 0; i < 4; i++) {
+//         inputs[i].classList.add("word-highlight");
+//       }
+//     }
+//   }
+// };
 
 /***** Event Listeners *****/
 // update letterInput
@@ -274,11 +278,12 @@ clearButton.addEventListener("click", clearPuzzle);
 checkButton.addEventListener("click", checkPuzzle);
 instructions.addEventListener("click", showInstructions);
 hideInstructionsButton.addEventListener("click", hideInstructions);
-clueContainer.addEventListener("click", highlightClue);
 reset.addEventListener("click", resetGame);
 reveal.addEventListener("click", revealPuzzle);
 grid.addEventListener("dblclick", toggleDirection);
-grid.addEventListener("click", highlightLine);
+// grid.addEventListener("click", highlightLine);
+// clueContainer.addEventListener("click", highlightClue);
+
 
 // TODO
 // remove nav div when you win
