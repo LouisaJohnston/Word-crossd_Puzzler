@@ -87,6 +87,7 @@ To check answers:
     };
 
     const inputs = document.querySelectorAll(".box > input");
+    const checkButton = document.querySelector("#check-puzzle");
 
     const checkPuzzle = () => {
     for (i = 0; i < inputs.length; i++) {
