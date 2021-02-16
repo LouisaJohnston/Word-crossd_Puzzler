@@ -29,21 +29,81 @@ The user completes the puzzle by first reading the provided clues and trying to 
 * After input is entered, flow from one box within a word to the next without clicking into it.
 * Words are intitally filled out in across/row format but can be toggled to down/column by either clicking a toggle button or double clicking on any box in the word.
 * Game will remember orientation from one word to the next.
-* When a box is clicked, the entire word it's in will become highlighted with the selected box in a different color.
-* When a clue is clicked, its corresponding word inputs arehighlighted, with the box at the beginning of the word in a different color.
 
 ### Buttons/Display Elements:
 * Automatically store inputs without hitting "enter"
-* Show either time elapsed or a countdown for more competitive play
+* Show time elapsed
 * Option to clear board of user input
-* Option to check guesses either automatically or manually
-    * Display "/" design across incorrect inputs, turn correct inputs a different color
-* Allow user to "pencil-in" inputs by changing input color
-* Display selected clue above the puzzle grig by either clicking the clue in the list or by clicking any input element and it will display the corresponding clue
-    * Arrow buttons to display previous or subsequent clue and highlight the corresponding word inputs
-    * If the user wins, that message will display in place of the selected clue
-* Option to change color scheme according to predetermined list of options
+* Option to check guesses 
+* Option to reveal puzzle
 
-### Extra stretch
-* Additional puzzles
-* Bigger puzzle grids
+## Code Snippets
+To show time elapsed:
+
+    var totalSeconds = 0;
+    const updateTimer = () => {
+    ++totalSeconds;
+    seconds.innerText = formatTimer(totalSeconds % 60);
+    minutes.innerText = formatTimer(parseInt(totalSeconds / 60));
+    };
+
+    function formatTimer(val) {
+    var valString = val + "";
+    if (valString.length < 2) {
+        return "0" + valString;
+    } else {
+        return valString;
+    }
+    }
+
+    countUp = setInterval(updateTimer, 1000);
+
+    document.addEventListener("DOMContentLoaded", updateTimer);
+
+To check answers: 
+
+    const letterKey = {
+    one: "C",
+    two: "H",
+    three: "E",
+    four: "R",
+    five: "L",
+    six: "O",
+    seven: "W",
+    eight: "E",
+    nine: "B",
+    ten: "A",
+    eleven: "T",
+    twelve: "E",
+    thirteen: "D",
+    fourteen: "E",
+    fifteen: "V",
+    sixteen: "E",
+    seventeen: "R",
+    eighteen: "E",
+    nineteen: "E",
+    twenty: "L",
+    twentyone: "S",
+    };
+
+    const inputs = document.querySelectorAll(".box > input");
+
+    const checkPuzzle = () => {
+    for (i = 0; i < inputs.length; i++) {
+        let inputUpper = inputs[i].value.toUpperCase();
+        if (inputs[i].value !== "" && inputUpper !== letterKey[inputs[i].id]) {
+        inputs[i].classList.add("incorrect");
+        grid.addEventListener("input", removeIncorrect);
+        }
+    }
+    };
+
+    const removeIncorrect = (e) => {
+    let targetInput = e.target;
+    targetInput.classList.remove("incorrect");
+    };
+
+    checkButton.addEventListener("click", checkPuzzle);
+
+## Technologies Used
+JavaScript, CSS3 and HTML5

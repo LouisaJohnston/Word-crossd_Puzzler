@@ -385,7 +385,7 @@ hideInstructionsButton.addEventListener("click", hideInstructions);
 reset.addEventListener("click", resetGame);
 reveal.addEventListener("click", revealPuzzle);
 grid.addEventListener("dblclick", toggleDirection);
-grid.addEventListener("click", highlightLine);
-grid.addEventListener("input", highlightLine);
+// grid.addEventListener("click", highlightLine);
+// grid.addEventListener("input", highlightLine);
 
 // clueContainer.addEventListener("click", highlightClue);
