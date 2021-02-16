@@ -29,6 +29,31 @@ const letterKey = {
   twentyone: "S",
 };
 
+// store user input
+let letterInput = {
+  one: "",
+  two: "",
+  three: "",
+  four: "",
+  five: "",
+  six: "",
+  seven: "",
+  eight: "",
+  nine: "",
+  ten: "",
+  eleven: "",
+  twelve: "",
+  thirteen: "",
+  fourteen: "",
+  fifteen: "",
+  sixteen: "",
+  seventeen: "",
+  eighteen: "",
+  nineteen: "",
+  twenty: "",
+  twentyone: "",
+};
+
 // store flow sequence
 let flowSequence = {
   one: "two",
@@ -78,30 +103,29 @@ let flowSequenceDown = {
   eighteen: "one",
 };
 
-// store user input
-let letterInput = {
-  one: "",
-  two: "",
-  three: "",
-  four: "",
-  five: "",
-  six: "",
-  seven: "",
-  eight: "",
-  nine: "",
-  ten: "",
-  eleven: "",
-  twelve: "",
-  thirteen: "",
-  fourteen: "",
-  fifteen: "",
-  sixteen: "",
-  seventeen: "",
-  eighteen: "",
-  nineteen: "",
-  twenty: "",
-  twentyone: "",
-};
+inputsDown = [
+  "one",
+  "five",
+  "ten",
+  "fifteen",
+  "nineteen",
+  "two",
+  "six",
+  "eleven",
+  "sixteen",
+  "twenty",
+  "three",
+  "seven",
+  "twelve",
+  "seventeen",
+  "twentyone",
+  "four",
+  "eight",
+  "thirteen",
+  "nine",
+  "fourteen",
+  "eighteen",
+];
 
 /***** DOM References *****/
 const grid = document.querySelector(".grid-container");
@@ -118,7 +142,7 @@ const clueContainer = document.querySelector(".clue-container");
 const reset = document.querySelector("#reset");
 const reveal = document.querySelector("#reveal-puzzle");
 const clues = document.querySelectorAll(".clue");
-const blackBoxDivs = document.querySelectorAll(".black-box")
+const blackBoxDivs = document.querySelectorAll(".black-box");
 
 /***** Functions and Game Logic *****/
 // initialize game
@@ -223,18 +247,6 @@ const hideInstructions = () => {
   instructionsContainer.classList.add("hidden");
 };
 
-// hightlight selected clue
-// const highlightClue = (e) => {
-//   let targetClue = e.target;
-//   targetClue.classList.add("cream-highlight");
-//   for (i = 0; i < clues.length; i++) {
-//     if (clues[i] !== targetClue) {
-//       clues[i].classList.remove("cream-highlight");
-//     }
-//   }
-//   highlightLine();
-// };
-
 // reset game
 const resetGame = () => {
   isGameWon = false;
@@ -267,6 +279,18 @@ const toggleDirection = () => {
   }
 };
 
+// hightlight selected clue
+// const highlightClue = (e) => {
+//   let targetClue = e.target;
+//   targetClue.classList.add("cream-highlight");
+//   for (i = 0; i < clues.length; i++) {
+//     if (clues[i] !== targetClue) {
+//       clues[i].classList.remove("cream-highlight");
+//     }
+//   }
+//   highlightLine();
+// };
+
 // let targetLetter = e.target;
 // targetLetter.classList.add("highlight-letter");
 // for (i = 0; i < blackBoxDivs.length; i++) {
@@ -277,101 +301,154 @@ const toggleDirection = () => {
 //     inputs[i].classList.remove("highlight-letter");
 // }
 
-// const highlightLine = (e) => {
-//   let targetID = e.target.id;
-//   if (directionAcross === true) {
-//     if (targetID === "one" || targetID === "two" || targetID === "three" || targetID === "four") {
-//       for (i = 0; i < 4; i++) {
-//         inputs[i].classList.add("word-highlight");
-//       }
-//       for (i = 4; i < inputs.length; i++) {
-//         inputs[i].classList.remove("word-highlight");
-//       }
-//     } else if (targetID === "five" || targetID === "six" || targetID === "seven" || targetID === "eight") {
-//       for (i = 4; i < 8; i++) {
-//         inputs[i].classList.add("word-highlight");
-//       }
-//       for (i = 0; i < 4; i++) {
-//         inputs[i].classList.remove("word-highlight");
-//       }
-//       for (i = 8; i < 21; i++) {
-//         inputs[i].classList.remove("word-highlight");
-//       }
-//     } else if (targetID === "nine" || targetID === "ten" || targetID === "eleven" || targetID === "twelve" || targetID === "thirteen") {
-//       for (i = 8; i < 13; i++) {
-//         inputs[i].classList.add("word-highlight");
-//       }
-//       for (i = 0; i < 8; i++) {
-//         inputs[i].classList.remove("word-highlight");
-//       }
-//       for (i = 13; i < 21; i++) {
-//         inputs[i].classList.remove("word-highlight");
-//       }
-//     } else if (targetID === "fourteen" || targetID === "fifteen" || targetID === "sixteen" || targetID === "seventeen") {
-//       for (i = 13; i < 17; i++) {
-//         inputs[i].classList.add("word-highlight");
-//       }
-//       for (i = 0; i < 13; i++) {
-//         inputs[i].classList.remove("word-highlight");
-//       }
-//       for (i = 17; i < 21; i++) {
-//         inputs[i].classList.remove("word-highlight");
-//       }
-//     } else if (targetID === "eighteen" || targetID === "nineteen" || targetID === "twenty" || targetID === "twentyone") {
-//       for (i = 17; i < inputs.length; i++) {
-//         inputs[i].classList.add("word-highlight");
-//       }
-//       for (i = 0; i < 17; i++) {
-//         inputs[i].classList.remove("word-highlight");
-//       }
-//     }
-//   } else {
-//     if (targetID === "one" || targetID === "five" || targetID === "ten" || targetID === "nineteen") {
-//       for (i = 0; i < 4; i++) {
-//         inputs[i].classList.add("word-highlight");
-//       }
-//       for (i = 4; i < inputs.length; i++) {
-//         inputs[i].classList.remove("word-highlight");
-//       }
-//     } else if (targetID === "five" || targetID === "six" || targetID === "seven" || targetID === "eight") {
-//       for (i = 4; i < 8; i++) {
-//         inputs[i].classList.add("word-highlight");
-//       }
-//       for (i = 0; i < 4; i++) {
-//         inputs[i].classList.remove("word-highlight");
-//       }
-//       for (i = 8; i < 21; i++) {
-//         inputs[i].classList.remove("word-highlight");
-//       }
-//     } else if (targetID === "nine" || targetID === "ten" || targetID === "eleven" || targetID === "twelve" || targetID === "thirteen") {
-//       for (i = 8; i < 13; i++) {
-//         inputs[i].classList.add("word-highlight");
-//       }
-//       for (i = 0; i < 8; i++) {
-//         inputs[i].classList.remove("word-highlight");
-//       }
-//       for (i = 13; i < 21; i++) {
-//         inputs[i].classList.remove("word-highlight");
-//       }
-//     } else if (targetID === "fourteen" || targetID === "fifteen" || targetID === "sixteen" || targetID === "seventeen") {
-//       for (i = 13; i < 17; i++) {
-//         inputs[i].classList.add("word-highlight");
-//       }
-//       for (i = 0; i < 13; i++) {
-//         inputs[i].classList.remove("word-highlight");
-//       }
-//       for (i = 17; i < 21; i++) {
-//         inputs[i].classList.remove("word-highlight");
-//       }
-//     } else if (targetID === "eighteen" || targetID === "nineteen" || targetID === "twenty" || targetID === "twentyone") {
-//       for (i = 17; i < inputs.length; i++) {
-//         inputs[i].classList.add("word-highlight");
-//       }
-//       for (i = 0; i < 17; i++) {
-//         inputs[i].classList.remove("word-highlight");
-//       }
-//   }
-// };
+const highlightLine = (e) => {
+  let targetID = e.target.id;
+  if (directionAcross === true) {
+    if (
+      targetID === "one" ||
+      targetID === "two" ||
+      targetID === "three" ||
+      targetID === "four"
+    ) {
+      for (i = 0; i < 4; i++) {
+        inputs[i].classList.add("word-highlight");
+      }
+      for (i = 4; i < inputs.length; i++) {
+        inputs[i].classList.remove("word-highlight");
+      }
+    } else if (
+      targetID === "five" ||
+      targetID === "six" ||
+      targetID === "seven" ||
+      targetID === "eight"
+    ) {
+      for (i = 4; i < 8; i++) {
+        inputs[i].classList.add("word-highlight");
+      }
+      for (i = 0; i < 4; i++) {
+        inputs[i].classList.remove("word-highlight");
+      }
+      for (i = 8; i < 21; i++) {
+        inputs[i].classList.remove("word-highlight");
+      }
+    } else if (
+      targetID === "nine" ||
+      targetID === "ten" ||
+      targetID === "eleven" ||
+      targetID === "twelve" ||
+      targetID === "thirteen"
+    ) {
+      for (i = 8; i < 13; i++) {
+        inputs[i].classList.add("word-highlight");
+      }
+      for (i = 0; i < 8; i++) {
+        inputs[i].classList.remove("word-highlight");
+      }
+      for (i = 13; i < 21; i++) {
+        inputs[i].classList.remove("word-highlight");
+      }
+    } else if (
+      targetID === "fourteen" ||
+      targetID === "fifteen" ||
+      targetID === "sixteen" ||
+      targetID === "seventeen"
+    ) {
+      for (i = 13; i < 17; i++) {
+        inputs[i].classList.add("word-highlight");
+      }
+      for (i = 0; i < 13; i++) {
+        inputs[i].classList.remove("word-highlight");
+      }
+      for (i = 17; i < 21; i++) {
+        inputs[i].classList.remove("word-highlight");
+      }
+    } else if (
+      targetID === "eighteen" ||
+      targetID === "nineteen" ||
+      targetID === "twenty" ||
+      targetID === "twentyone"
+    ) {
+      for (i = 17; i < inputs.length; i++) {
+        inputs[i].classList.add("word-highlight");
+      }
+      for (i = 0; i < 17; i++) {
+        inputs[i].classList.remove("word-highlight");
+      }
+    }
+  } else {
+    if (
+      targetID === "one" ||
+      targetID === "five" ||
+      targetID === "six" ||
+      targetID === ""
+    ) {
+      for (i = 0; i < 4; i++) {
+        inputs[i].classList.add("word-highlight");
+      }
+      for (i = 4; i < inputs.length; i++) {
+        inputs[i].classList.remove("word-highlight");
+      }
+    } else if (
+      targetID === "five" ||
+      targetID === "six" ||
+      targetID === "seven" ||
+      targetID === "eight"
+    ) {
+      for (i = 4; i < 8; i++) {
+        inputs[i].classList.add("word-highlight");
+      }
+      for (i = 0; i < 4; i++) {
+        inputs[i].classList.remove("word-highlight");
+      }
+      for (i = 8; i < 21; i++) {
+        inputs[i].classList.remove("word-highlight");
+      }
+    } else if (
+      targetID === "nine" ||
+      targetID === "ten" ||
+      targetID === "eleven" ||
+      targetID === "twelve" ||
+      targetID === "thirteen"
+    ) {
+      for (i = 8; i < 13; i++) {
+        inputs[i].classList.add("word-highlight");
+      }
+      for (i = 0; i < 8; i++) {
+        inputs[i].classList.remove("word-highlight");
+      }
+      for (i = 13; i < 21; i++) {
+        inputs[i].classList.remove("word-highlight");
+      }
+    } else if (
+      targetID === "fourteen" ||
+      targetID === "fifteen" ||
+      targetID === "sixteen" ||
+      targetID === "seventeen"
+    ) {
+      for (i = 13; i < 17; i++) {
+        inputs[i].classList.add("word-highlight");
+      }
+      for (i = 0; i < 13; i++) {
+        inputs[i].classList.remove("word-highlight");
+      }
+      for (i = 17; i < 21; i++) {
+        inputs[i].classList.remove("word-highlight");
+      }
+    } else if (
+      targetID === "eighteen" ||
+      targetID === "nineteen" ||
+      targetID === "twenty" ||
+      targetID === "twentyone"
+    ) {
+      for (i = 17; i < inputs.length; i++) {
+        inputs[i].classList.add("word-highlight");
+      }
+      for (i = 0; i < 17; i++) {
+        inputs[i].classList.remove("word-highlight");
+      }
+    }
+  }
+};
 
 /***** Event Listeners *****/
 // update letterInput
@@ -385,7 +462,7 @@ hideInstructionsButton.addEventListener("click", hideInstructions);
 reset.addEventListener("click", resetGame);
 reveal.addEventListener("click", revealPuzzle);
 grid.addEventListener("dblclick", toggleDirection);
-// grid.addEventListener("click", highlightLine);
-// grid.addEventListener("input", highlightLine);
+grid.addEventListener("click", highlightLine);
+grid.addEventListener("input", highlightLine);
 
 // clueContainer.addEventListener("click", highlightClue);
