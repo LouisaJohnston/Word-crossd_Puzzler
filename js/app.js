@@ -75,7 +75,7 @@ let flowSequenceDown = {
   thirteen: "nine",
   nine: "fourteen",
   fourteen: "eighteen",
-  eighteen: "one"
+  eighteen: "one",
 };
 
 // store user input
@@ -118,6 +118,7 @@ const clueContainer = document.querySelector(".clue-container");
 const reset = document.querySelector("#reset");
 const reveal = document.querySelector("#reveal-puzzle");
 const clues = document.querySelectorAll(".clue");
+const blackBoxDivs = document.querySelectorAll(".black-box")
 
 /***** Functions and Game Logic *****/
 // initialize game
@@ -157,6 +158,13 @@ const focusNext = (e) => {
     document.querySelector("#" + nextDownID).focus();
   }
 };
+
+// const noFlow = (e) => {
+//   const key = e.key
+//   if (key === "Delete") {
+//     e.target.flow()
+//   }
+// }
 
 // check if puzzle has been solved
 const checkWin = () => {
@@ -259,34 +267,109 @@ const toggleDirection = () => {
   }
 };
 
-// const highlightLine = (e) => {
-//   let targetLetter = e.target;
-//   let targetID = e.target.id;
-//     targetLetter.classList.add("highlight-letter");
-//     // move this chunk into focus^^
-//   for (i = 0; i < inputs.length; i++) {
-//     if (inputs[i].id !== targetID)
+// let targetLetter = e.target;
+// targetLetter.classList.add("highlight-letter");
+// for (i = 0; i < blackBoxDivs.length; i++) {
+//   blackBoxDivs[i].classList.remove("highlight-letter");
+// }
+// for (i = 0; i < inputs.length; i++) {
+//   if (inputs[i].id !== targetID )
 //     inputs[i].classList.remove("highlight-letter");
-//   }
+// }
+
+// const highlightLine = (e) => {
+//   let targetID = e.target.id;
 //   if (directionAcross === true) {
-//     if (targetID.includes("one" || "two" || "three" || "four")) {
+//     if (targetID === "one" || targetID === "two" || targetID === "three" || targetID === "four") {
 //       for (i = 0; i < 4; i++) {
 //         inputs[i].classList.add("word-highlight");
 //       }
-//       for (i = 5; i < inputs.length; i++) {
+//       for (i = 4; i < inputs.length; i++) {
 //         inputs[i].classList.remove("word-highlight");
 //       }
-//     } else if (targetID.includes("five" || "six" || "seven" || "eight")){
-//       for (i = 5; i < 8; i++) {
+//     } else if (targetID === "five" || targetID === "six" || targetID === "seven" || targetID === "eight") {
+//       for (i = 4; i < 8; i++) {
 //         inputs[i].classList.add("word-highlight");
 //       }
-//       for (i = 0; i < 5; i++) {
+//       for (i = 0; i < 4; i++) {
 //         inputs[i].classList.remove("word-highlight");
 //       }
-//       // for (i = 8; i < 21; i++) {
-//       //   inputs[i].classList.remove("word-highlight");
-//       // }
-//     } 
+//       for (i = 8; i < 21; i++) {
+//         inputs[i].classList.remove("word-highlight");
+//       }
+//     } else if (targetID === "nine" || targetID === "ten" || targetID === "eleven" || targetID === "twelve" || targetID === "thirteen") {
+//       for (i = 8; i < 13; i++) {
+//         inputs[i].classList.add("word-highlight");
+//       }
+//       for (i = 0; i < 8; i++) {
+//         inputs[i].classList.remove("word-highlight");
+//       }
+//       for (i = 13; i < 21; i++) {
+//         inputs[i].classList.remove("word-highlight");
+//       }
+//     } else if (targetID === "fourteen" || targetID === "fifteen" || targetID === "sixteen" || targetID === "seventeen") {
+//       for (i = 13; i < 17; i++) {
+//         inputs[i].classList.add("word-highlight");
+//       }
+//       for (i = 0; i < 13; i++) {
+//         inputs[i].classList.remove("word-highlight");
+//       }
+//       for (i = 17; i < 21; i++) {
+//         inputs[i].classList.remove("word-highlight");
+//       }
+//     } else if (targetID === "eighteen" || targetID === "nineteen" || targetID === "twenty" || targetID === "twentyone") {
+//       for (i = 17; i < inputs.length; i++) {
+//         inputs[i].classList.add("word-highlight");
+//       }
+//       for (i = 0; i < 17; i++) {
+//         inputs[i].classList.remove("word-highlight");
+//       }
+//     }
+//   } else {
+//     if (targetID === "one" || targetID === "five" || targetID === "ten" || targetID === "nineteen") {
+//       for (i = 0; i < 4; i++) {
+//         inputs[i].classList.add("word-highlight");
+//       }
+//       for (i = 4; i < inputs.length; i++) {
+//         inputs[i].classList.remove("word-highlight");
+//       }
+//     } else if (targetID === "five" || targetID === "six" || targetID === "seven" || targetID === "eight") {
+//       for (i = 4; i < 8; i++) {
+//         inputs[i].classList.add("word-highlight");
+//       }
+//       for (i = 0; i < 4; i++) {
+//         inputs[i].classList.remove("word-highlight");
+//       }
+//       for (i = 8; i < 21; i++) {
+//         inputs[i].classList.remove("word-highlight");
+//       }
+//     } else if (targetID === "nine" || targetID === "ten" || targetID === "eleven" || targetID === "twelve" || targetID === "thirteen") {
+//       for (i = 8; i < 13; i++) {
+//         inputs[i].classList.add("word-highlight");
+//       }
+//       for (i = 0; i < 8; i++) {
+//         inputs[i].classList.remove("word-highlight");
+//       }
+//       for (i = 13; i < 21; i++) {
+//         inputs[i].classList.remove("word-highlight");
+//       }
+//     } else if (targetID === "fourteen" || targetID === "fifteen" || targetID === "sixteen" || targetID === "seventeen") {
+//       for (i = 13; i < 17; i++) {
+//         inputs[i].classList.add("word-highlight");
+//       }
+//       for (i = 0; i < 13; i++) {
+//         inputs[i].classList.remove("word-highlight");
+//       }
+//       for (i = 17; i < 21; i++) {
+//         inputs[i].classList.remove("word-highlight");
+//       }
+//     } else if (targetID === "eighteen" || targetID === "nineteen" || targetID === "twenty" || targetID === "twentyone") {
+//       for (i = 17; i < inputs.length; i++) {
+//         inputs[i].classList.add("word-highlight");
+//       }
+//       for (i = 0; i < 17; i++) {
+//         inputs[i].classList.remove("word-highlight");
+//       }
 //   }
 // };
 
@@ -302,12 +385,7 @@ hideInstructionsButton.addEventListener("click", hideInstructions);
 reset.addEventListener("click", resetGame);
 reveal.addEventListener("click", revealPuzzle);
 grid.addEventListener("dblclick", toggleDirection);
-// grid.addEventListener("click", highlightLine);
+grid.addEventListener("click", highlightLine);
+grid.addEventListener("input", highlightLine);
+
 // clueContainer.addEventListener("click", highlightClue);
-
-// TODO
-// remove nav div when you win
-// highlight selected clue
-// highlight word letter is in
-
-// put clues in spans
