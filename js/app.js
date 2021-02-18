@@ -379,19 +379,20 @@ const highlightLine = (e) => {
     if (
       targetID === "one" ||
       targetID === "five" ||
-      targetID === "six" ||
-      targetID === ""
+      targetID === "ten" ||
+      targetID === "fifteen"||
+      targetID === "nineteen"
     ) {
-      for (i = 0; i < 4; i++) {
-        inputs[i].classList.add("word-highlight");
+      for (i = 0; i < 5; i++) {
+        document.querySelector("#" + inputsDown[i]).classList.add("word-highlight");
       }
-      for (i = 4; i < inputs.length; i++) {
-        inputs[i].classList.remove("word-highlight");
+      for (i = 5; i < inputs.length; i++) {
+        document.querySelector("#" + inputsDown[i]).classList.remove("word-highlight");
       }
     } else if (
-      targetID === "five" ||
+      targetID === "two" ||
       targetID === "six" ||
-      targetID === "seven" ||
+      targetID === "eleven" ||
       targetID === "eight"
     ) {
       for (i = 4; i < 8; i++) {
