@@ -393,59 +393,58 @@ const highlightLine = (e) => {
       targetID === "two" ||
       targetID === "six" ||
       targetID === "eleven" ||
-      targetID === "eight"
+      targetID === "sixteen" ||
+      targetID === "twenty"
     ) {
-      for (i = 4; i < 8; i++) {
-        inputs[i].classList.add("word-highlight");
+      for (i = 5; i < 10; i++) {
+        document.querySelector("#" + inputsDown[i]).classList.add("word-highlight");
       }
-      for (i = 0; i < 4; i++) {
-        inputs[i].classList.remove("word-highlight");
+      for (i = 0; i < 5; i++) {
+        document.querySelector("#" + inputsDown[i]).classList.remove("word-highlight");
       }
-      for (i = 8; i < 21; i++) {
-        inputs[i].classList.remove("word-highlight");
+      for (i = 10; i < 21; i++) {
+        document.querySelector("#" + inputsDown[i]).classList.remove("word-highlight");
+      }
+    } else if (
+      targetID === "three" ||
+      targetID === "seven" ||
+      targetID === "twelve" ||
+      targetID === "seventeen" ||
+      targetID === "twentyone"
+    ) {
+      for (i = 10; i < 15; i++) {
+        document.querySelector("#" + inputsDown[i]).classList.add("word-highlight");
+      }
+      for (i = 0; i < 10; i++) {
+        document.querySelector("#" + inputsDown[i]).classList.remove("word-highlight");
+      }
+      for (i = 15; i < 21; i++) {
+        document.querySelector("#" + inputsDown[i]).classList.remove("word-highlight");
+      }
+    } else if (
+      targetID === "four" ||
+      targetID === "eight" ||
+      targetID === "thirteen"
+    ) {
+      for (i = 15; i < 18; i++) {
+        document.querySelector("#" + inputsDown[i]).classList.add("word-highlight");
+      }
+      for (i = 0; i < 15; i++) {
+        document.querySelector("#" + inputsDown[i]).classList.remove("word-highlight");
+      }
+      for (i = 18; i < 21; i++) {
+        document.querySelector("#" + inputsDown[i]).classList.remove("word-highlight");
       }
     } else if (
       targetID === "nine" ||
-      targetID === "ten" ||
-      targetID === "eleven" ||
-      targetID === "twelve" ||
-      targetID === "thirteen"
-    ) {
-      for (i = 8; i < 13; i++) {
-        inputs[i].classList.add("word-highlight");
-      }
-      for (i = 0; i < 8; i++) {
-        inputs[i].classList.remove("word-highlight");
-      }
-      for (i = 13; i < 21; i++) {
-        inputs[i].classList.remove("word-highlight");
-      }
-    } else if (
       targetID === "fourteen" ||
-      targetID === "fifteen" ||
-      targetID === "sixteen" ||
-      targetID === "seventeen"
+      targetID === "eighteen"
     ) {
-      for (i = 13; i < 17; i++) {
-        inputs[i].classList.add("word-highlight");
+      for (i = 18; i < inputs.length; i++) {
+        document.querySelector("#" + inputsDown[i]).classList.add("word-highlight");
       }
-      for (i = 0; i < 13; i++) {
-        inputs[i].classList.remove("word-highlight");
-      }
-      for (i = 17; i < 21; i++) {
-        inputs[i].classList.remove("word-highlight");
-      }
-    } else if (
-      targetID === "eighteen" ||
-      targetID === "nineteen" ||
-      targetID === "twenty" ||
-      targetID === "twentyone"
-    ) {
-      for (i = 17; i < inputs.length; i++) {
-        inputs[i].classList.add("word-highlight");
-      }
-      for (i = 0; i < 17; i++) {
-        inputs[i].classList.remove("word-highlight");
+      for (i = 0; i < 18; i++) {
+        document.querySelector("#" + inputsDown[i]).classList.remove("word-highlight");
       }
     }
   }
