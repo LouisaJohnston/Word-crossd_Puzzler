@@ -54,6 +54,8 @@ let letterInput = {
   twentyone: "",
 };
 
+// delete flow sequences
+
 // store flow sequence
 let flowSequence = {
   one: "two",
@@ -271,7 +273,7 @@ const revealPuzzle = () => {
   clearInterval(countUp);
 };
 
-const toggleDirection = () => {
+const toggleDirection = (e) => {
   if (directionAcross === true) {
     directionAcross = false;
   } else {
@@ -280,16 +282,16 @@ const toggleDirection = () => {
 };
 
 // hightlight selected clue
-// const highlightClue = (e) => {
-//   let targetClue = e.target;
-//   targetClue.classList.add("cream-highlight");
-//   for (i = 0; i < clues.length; i++) {
-//     if (clues[i] !== targetClue) {
-//       clues[i].classList.remove("cream-highlight");
-//     }
-//   }
-//   highlightLine();
-// };
+const highlightClue = (e) => {
+  let targetClue = e.target;
+
+  targetClue.classList.add("cream-highlight");
+  for (i = 0; i < clues.length; i++) {
+    if (clues[i] !== targetClue) {
+      clues[i].classList.remove("cream-highlight");
+    }
+  }
+};
 
 // let targetLetter = e.target;
 // targetLetter.classList.add("highlight-letter");
@@ -464,5 +466,5 @@ reveal.addEventListener("click", revealPuzzle);
 grid.addEventListener("dblclick", toggleDirection);
 grid.addEventListener("click", highlightLine);
 grid.addEventListener("input", highlightLine);
-
-// clueContainer.addEventListener("click", highlightClue);
+grid.addEventListener("dblclick", highlightLine)
+clueContainer.addEventListener("click", highlightClue);
