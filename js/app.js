@@ -270,7 +270,7 @@ const revealPuzzle = () => {
   clearInterval(countUp);
 };
 
-const toggleDirection = (e) => {
+const toggleDirection = () => {
   if (directionAcross === true) {
     directionAcross = false;
   } else {
