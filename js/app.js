@@ -185,12 +185,9 @@ const focusNext = (e) => {
   }
 };
 
-// const noFlow = (e) => {
-//   const key = e.key
-//   if (key === "Delete") {
-//     e.target.flow()
-//   }
-// }
+// For "Delete key"
+//  reverse array without mutating:
+// var newarray = array.slice().reverse();
 
 // check if puzzle has been solved
 const checkWin = () => {
@@ -283,10 +280,15 @@ const toggleDirection = (e) => {
 
 // hightlight selected clue
 const highlightClue = (e) => {
+  e.preventDefault();
   let targetClue = e.target;
-
-  targetClue.classList.add("cream-highlight");
+    // targetClue.classList.add("cream-highlight");
   for (i = 0; i < clues.length; i++) {
+    if (clues[i] === targetClue) {
+      clues[i].classList.add("cream-highlight");
+    }
+  }
+    for (i = 0; i < clues.length; i++) {
     if (clues[i] !== targetClue) {
       clues[i].classList.remove("cream-highlight");
     }
@@ -451,6 +453,8 @@ const highlightLine = (e) => {
     }
   }
 };
+
+
 
 /***** Event Listeners *****/
 // update letterInput

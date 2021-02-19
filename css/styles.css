@@ -184,7 +184,6 @@ input {
   height: 400px;
   width: 400px;
   font-size: 1em;
-  background-color: rgba(255, 255, 255, 0.8);
   filter: drop-shadow(10px 10px 6px rgba(33, 42, 123, 0.4));
 }
 
@@ -197,12 +196,19 @@ input {
   width: 50%;
 }
 
+.direction-title {
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-top: 0;
+}
+
 h3.direction-title {
   text-align: center;
   border-bottom: 2px solid rgb(101, 131, 137);
+  padding-top: 15px;
   padding-bottom: 15px;
   font-size: 1.5em;
   font-weight: 900;
+
 }
 
 .clue {
@@ -219,8 +225,7 @@ h3.direction-title {
 
 .cream-highlight {
   background-color: rgba(246, 245, 193, 0.8);
-  position: relative;
-  width: 83%;
+  width: 140px;
 }
 
 .word-highlight {
@@ -231,3 +236,4 @@ h3.direction-title {
 .highlight-letter {
   background-color: rgba(255, 255, 255, 0.8);
 }
+
