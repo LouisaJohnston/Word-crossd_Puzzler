@@ -140,14 +140,11 @@ const checkButton = document.querySelector("#check-puzzle");
 const instructions = document.querySelector("#instructions");
 const hideInstructionsButton = document.querySelector("#hide-instructions");
 const instructionsContainer = document.querySelector("#instructions-container");
-const clueContainer = document.querySelector(".clue-container");
 const reset = document.querySelector("#reset");
 const reveal = document.querySelector("#reveal-puzzle");
-const clues = document.querySelectorAll(".clue");
-const blackBoxDivs = document.querySelectorAll(".black-box");
 
-/***** Functions and Game Logic *****/
-// initialize game
+/********************* Functions and Game Logic *********************/
+// initialize game, Timer
 const updateTimer = () => {
   ++totalSeconds;
   seconds.innerText = formatTimer(totalSeconds % 60);
@@ -165,49 +162,14 @@ function formatTimer(val) {
 
 countUp = setInterval(updateTimer, 1000);
 
-//store input value for letterInput at key index
-const updateValue = (e) => {
-  let boxNumber = e.target.id;
-  let inputValue = e.target.value;
-  let uppercase = inputValue.toUpperCase();
-  letterInput[boxNumber] = uppercase;
-  checkWin();
-};
-
-// focus on next input box
-const focusNext = (e) => {
-  if (directionAcross === true) {
-    const nextID = flowSequence[e.target.id];
-    document.querySelector("#" + nextID).focus();
-  } else {
-    const nextDownID = flowSequenceDown[e.target.id];
-    document.querySelector("#" + nextDownID).focus();
+/*********************  Buttons *********************/
+// reveal puzzle
+const revealPuzzle = () => {
+  for (i = 0; i < inputs.length; i++) {
+    inputs[i].value = letterKey[inputs[i].id];
   }
-};
-
-// For "Delete key"
-//  reverse array without mutating:
-// var newarray = array.slice().reverse();
-
-// check if puzzle has been solved
-const checkWin = () => {
-  for (letter in letterKey) {
-    if (letterKey[letter] !== letterInput[letter]) {
-      return;
-    }
-  }
-  return winState();
-};
-
-// display winState message
-const winState = () => {
-  isGameWon = true;
-  messageContainer.classList.remove("hidden");
   reset.classList.remove("hidden");
-  if (isGameWon === true) {
-    clearInterval(countUp);
-  }
-  console.log(isGameWon);
+  clearInterval(countUp);
 };
 
 // clear the puzzle
@@ -261,13 +223,16 @@ const resetTimer = () => {
   updateTimer();
 };
 
-// reveal puzzle
-const revealPuzzle = () => {
-  for (i = 0; i < inputs.length; i++) {
-    inputs[i].value = letterKey[inputs[i].id];
+/********************* Game Play *********************/
+// focus on next input box
+const focusNext = (e) => {
+  if (directionAcross === true) {
+    const nextID = flowSequence[e.target.id];
+    document.querySelector("#" + nextID).focus();
+  } else {
+    const nextDownID = flowSequenceDown[e.target.id];
+    document.querySelector("#" + nextDownID).focus();
   }
-  reset.classList.remove("hidden");
-  clearInterval(countUp);
 };
 
 const toggleDirection = () => {
@@ -278,32 +243,61 @@ const toggleDirection = () => {
   }
 };
 
-// hightlight selected clue
-const highlightClue = (e) => {
-  e.preventDefault();
-  let targetClue = e.target;
-    // targetClue.classList.add("cream-highlight");
-  for (i = 0; i < clues.length; i++) {
-    if (clues[i] === targetClue) {
-      clues[i].classList.add("cream-highlight");
-    }
+// For "Delete key"
+//  reverse array without mutating:
+// var newarray = array.slice().reverse();
+
+// Credits: http://blog.vishalon.net/index.php/javascript-getting-and-setting-caret-position-in-textarea/
+const setCaretPosition = (ctrl, pos) => {
+  // Modern browsers
+  if (ctrl.setSelectionRange) {
+    ctrl.focus();
+    ctrl.setSelectionRange(pos, pos);
+  // IE8 and below
+  } else if (ctrl.createTextRange) {
+    var range = ctrl.createTextRange();
+    range.collapse(true);
+    range.moveEnd('character', pos);
+    range.moveStart('character', pos);
+    range.select();
   }
-    for (i = 0; i < clues.length; i++) {
-    if (clues[i] !== targetClue) {
-      clues[i].classList.remove("cream-highlight");
-    }
-  }
+}
+const caretTarget = (e) => {
+  let input = e.target
+  setCaretPosition(input, input.value.length);
+}
+
+
+
+//store input value for letterInput at key index
+const updateValue = (e) => {
+  let boxNumber = e.target.id;
+  let inputValue = e.target.value;
+  let uppercase = inputValue.toUpperCase();
+  letterInput[boxNumber] = uppercase;
+  checkWin();
 };
 
-// let targetLetter = e.target;
-// targetLetter.classList.add("highlight-letter");
-// for (i = 0; i < blackBoxDivs.length; i++) {
-//   blackBoxDivs[i].classList.remove("highlight-letter");
-// }
-// for (i = 0; i < inputs.length; i++) {
-//   if (inputs[i].id !== targetID )
-//     inputs[i].classList.remove("highlight-letter");
-// }
+// check if puzzle has been solved
+const checkWin = () => {
+  for (letter in letterKey) {
+    if (letterKey[letter] !== letterInput[letter]) {
+      return;
+    }
+  }
+  return winState();
+};
+
+// display winState message
+const winState = () => {
+  isGameWon = true;
+  messageContainer.classList.remove("hidden");
+  reset.classList.remove("hidden");
+  if (isGameWon === true) {
+    clearInterval(countUp);
+  }
+  console.log(isGameWon);
+};
 
 const highlightLine = (e) => {
   let targetID = e.target.id;
@@ -457,18 +451,57 @@ const highlightLine = (e) => {
 
 
 /***** Event Listeners *****/
-// update letterInput
-grid.addEventListener("input", updateValue);
-grid.addEventListener("input", focusNext);
+// On load
 document.addEventListener("DOMContentLoaded", updateTimer);
-clearButton.addEventListener("click", clearPuzzle);
-checkButton.addEventListener("click", checkPuzzle);
+//Buttons
 instructions.addEventListener("click", showInstructions);
 hideInstructionsButton.addEventListener("click", hideInstructions);
-reset.addEventListener("click", resetGame);
+clearButton.addEventListener("click", clearPuzzle);
+checkButton.addEventListener("click", checkPuzzle);
 reveal.addEventListener("click", revealPuzzle);
+reset.addEventListener("click", resetGame);
+// for puzzlegrid input
+grid.addEventListener("input", updateValue);
+grid.addEventListener("input", focusNext);
 grid.addEventListener("dblclick", toggleDirection);
 grid.addEventListener("click", highlightLine);
 grid.addEventListener("input", highlightLine);
-grid.addEventListener("dblclick", highlightLine)
-clueContainer.addEventListener("click", highlightClue);
+grid.addEventListener("dblclick", highlightLine);
+grid.addEventListener("click", setCaretPosition);
+
+/********************  TO DO ********************/
+/********************  Event Listeners ********************/  
+// clueContainer.addEventListener("click", highlightClue);
+
+/******************** Functions ********************/
+// hightlight selected clue
+// const highlightClue = (e) => {
+//   e.preventDefault();
+//   let targetClue = e.target;
+//     // targetClue.classList.add("cream-highlight");
+//   for (i = 0; i < clues.length; i++) {
+//     if (clues[i] === targetClue) {
+//       clues[i].classList.add("cream-highlight");
+//     }
+//   }
+//     for (i = 0; i < clues.length; i++) {
+//     if (clues[i] !== targetClue) {
+//       clues[i].classList.remove("cream-highlight");
+//     }
+//   }
+// };
+
+// let targetLetter = e.target;
+// targetLetter.classList.add("highlight-letter");
+// for (i = 0; i < blackBoxDivs.length; i++) {
+//   blackBoxDivs[i].classList.remove("highlight-letter");
+// }
+// for (i = 0; i < inputs.length; i++) {
+//   if (inputs[i].id !== targetID )
+//     inputs[i].classList.remove("highlight-letter");
+// }
+
+/******************** DOM Elements ********************/
+// const blackBoxDivs = document.querySelectorAll(".black-box");
+// const clues = document.querySelectorAll(".clue");
+// const clueContainer = document.querySelector(".clue-container");
