@@ -1,19 +1,24 @@
-# Crossword Puzzle
-
-https://louisajohnston.github.io/
+# Word-Cross'd Puzzler
 
 ## Overview
 A crossword is a puzzle consisting of a grid of squares and blanks into which words crossing vertically and horizontally are written according to clues. I chose to build this game because I enjoy the intersection of logic and wordplay, and because I've spent a great deal of time completing crossword puzzles and it would be exciting to break the puzzle down into its smallest parts in order to rebuild it.
+
+View the live site here: https://louisajohnston.github.io/
+
+## Images
+![Initial Game State](images/initial.png)
+![Instructions](images/instructions.png)
+![Intermediate Game State after Check](images/check.png)
+![Final Game State](images/winstate.png)
+
 
 ## Game Rules
 The user completes the puzzle by first reading the provided clues and trying to guess the correct words according to a) the amount of letters in the word and b) intersecting letters that have already been filled out. The user wins by correctly guessing all the vertical and horizontal words.
 
 ## Wireframes
-![Initial Game State](wireframes/InitialGameState.jpg)
-
-![Intermediate Game State](wireframes/IntermediateGameState.jpg)
-
-![Final Game State](wireframes/FinalGameState.jpg)
+![Initial Wireframe](wireframes/InitialGameState.jpg)
+![Intermediate Wireframe](wireframes/IntermediateGameState.jpg)
+![Final Wireframe](wireframes/FinalGameState.jpg)
 
 
 
